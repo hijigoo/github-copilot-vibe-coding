@@ -175,29 +175,6 @@ source .venv/bin/activate
 
 ---
 
-## 📚 Step 6: 필수 패키지 설치하기 (5분)
-
-가상환경이 활성화된 상태에서:
-
-```bash
-# pandas: 데이터 분석
-# matplotlib: 데이터 시각화
-# flask: 웹 애플리케이션
-pip install pandas matplotlib flask
-```
-
-### 설치 확인
-```bash
-pip list
-```
-
-다음 패키지들이 보이면 성공:
-- pandas
-- matplotlib  
-- flask
-
----
-
 ## 🎉 축하합니다!
 
 환경 설정을 완료했습니다! 이제 여러분은:
@@ -229,20 +206,12 @@ pip list
 - 패키지 버전 충돌 방지
 - 프로젝트 독립성 유지
 
-### Q: 가상환경 활성화를 잊어버렸어요
+### Q: 가상환경이 활성화되었는지 확인하려면?
 **A**: 터미널 앞에 `(.venv)`가 없으면 비활성화된 것입니다.  
 Step 5의 활성화 명령어를 다시 실행하세요.
 
-### Q: pip install이 실패해요
-**A**: 다음을 시도해보세요:
-```bash
-# Python 버전 명시
-python3 -m pip install pandas matplotlib flask
-
-# 또는 업그레이드 후 재시도
-pip install --upgrade pip
-pip install pandas matplotlib flask
-```
+### Q: Python 패키지는 언제 설치하나요?
+**A**: **설치할 필요 없습니다!** GitHub Copilot Agent가 코드를 실행할 때 필요한 패키지를 자동으로 설치해줍니다. 여러분은 아무것도 하지 않아도 됩니다.
 
 ### Q: Windows에서 PowerShell 실행 정책 에러가 나요
 **A**: PowerShell을 관리자 권한으로 열고:
@@ -263,11 +232,8 @@ deactivate
 source .venv/bin/activate  # macOS/Linux
 .venv\Scripts\activate     # Windows
 
-# 설치된 패키지 목록
+# 설치된 패키지 목록 (참고용)
 pip list
-
-# 특정 패키지 설치 여부 확인
-pip show pandas
 ```
 
 ### VS Code 터미널
