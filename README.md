@@ -40,7 +40,7 @@
 | [Session 4: UX 리서치 분석](sessions/session4_ux_research.md) | 사용자 피드백 자동 분석 | 30분 |
 | [Session 5: 데이터 분석](sessions/session5_csv_report.md) | CSV → HTML 리포트 | 30분 |
 | [Session 6: 웹 애플리케이션](sessions/session6_web_app.md) | 웹페이지 만들기 | 30분 |
-| [Session 7: Excel 자동화](sessions/session7_automation.md) | Excel 작업 자동화 | 30분 |
+| [Session 7: 실무 적용](sessions/session7_automation.md) | 종합 복습 & Q&A | 30분 |
 
 ---
 
@@ -146,7 +146,7 @@ github-copilot-workshop/
 │   ├── session4_ux_research.md       # UX 분석 (30분)
 │   ├── session5_csv_report.md        # 데이터 분석 (30분)
 │   ├── session6_web_app.md           # 웹 앱 (30분)
-│   ├── session7_automation.md        # Excel 자동화 (30분)
+│   ├── session7_automation.md        # 실무 적용 & Q&A (30분)
 │   └── data/                         # 📊 실습 데이터
 ```
 

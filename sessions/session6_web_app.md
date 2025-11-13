@@ -245,6 +245,6 @@ A: 네! 파일을 스마트폰으로 보내서 브라우저로 열면 됩니다.
 ---
 
 **이전**: [← Session 5: CSV 리포트](session5_csv_report.md)  
-**다음**: [Session 7: Excel 자동화 →](session7_automation.md)
+**다음**: [Session 7: 실무 적용 & Q&A →](session7_automation.md)
 
 **다음**: [Session 7: 업무 자동화 →](session7_automation.md)
