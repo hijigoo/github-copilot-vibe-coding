@@ -1,0 +1,64 @@
+# 강사 전용 자료 (교육생에게 공유하지 않음)
+lecture/
+
+# Python 가상환경
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS 생성 파일
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# 로그 파일
+*.log
+
+# 임시 파일
+*.tmp
+*.temp
+.cache/
+
+# 테스트/개발용 파일
+test/
+tests/
+scratch/
+temp/
+tmp/
+
+# 환경 변수
+.env
+.env.local
+.env.*.local
+
+# 빌드 결과물
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# 개인 메모 및 작업 파일
+notes/
+TODO.md
+NOTES.md
+personal/
