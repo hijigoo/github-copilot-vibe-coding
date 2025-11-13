@@ -430,7 +430,5 @@ meeting_template.md 파일로 저장해줘.
 
 ---
 
-**이전**: [← Session 0: 환경 세팅](session0_setup.md)  
----
-
+**이전**: [← Session 1: 빠른 시작](session1_quick_start.md)  
 **다음**: [Session 3: 문서 자동 작성 →](session3_document_automation.md)
