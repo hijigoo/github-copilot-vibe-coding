@@ -404,3 +404,5 @@ PDF 변환 라이브러리(pdfkit 또는 weasyprint) 사용.
 
 **이전**: [← Session 4: UX 리서치 분석](session4_ux_research.md)  
 **다음**: [Session 6: 웹 페이지 만들기 →](session6_web_app.md)
+
+---

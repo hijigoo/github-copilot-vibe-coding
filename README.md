@@ -28,7 +28,7 @@
 
 ---
 
-## 📚 세션 구성 (총 4시간 10분)
+## 📚 세션 구성 (총 3시간 50분)
 
 | 세션 | 내용 | 시간 |
 |------|------|:----:|
@@ -40,8 +40,7 @@
 | [Session 4: UX 리서치 분석](sessions/session4_ux_research.md) | 사용자 피드백 자동 분석 | 30분 |
 | [Session 5: 데이터 분석](sessions/session5_csv_report.md) | CSV → HTML 리포트 | 30분 |
 | [Session 6: 웹 애플리케이션](sessions/session6_web_app.md) | 웹페이지 만들기 | 30분 |
-| [Session 7: 업무 자동화](sessions/session7_automation.md) | 반복 작업 자동화 | 30분 |
-| [Session 8: 워크플로우 통합](sessions/session8_workflow.md) | 실무 적용 계획 | 20분 |
+| [Session 7: Excel 자동화](sessions/session7_automation.md) | Excel 작업 자동화 | 30분 |
 
 ---
 
@@ -147,8 +146,7 @@ github-copilot-workshop/
 │   ├── session4_ux_research.md       # UX 분석 (30분)
 │   ├── session5_csv_report.md        # 데이터 분석 (30분)
 │   ├── session6_web_app.md           # 웹 앱 (30분)
-│   ├── session7_automation.md        # 자동화 (30분)
-│   ├── session8_workflow.md          # 워크플로우 (20분)
+│   ├── session7_automation.md        # Excel 자동화 (30분)
 │   └── data/                         # 📊 실습 데이터
 ```
 
