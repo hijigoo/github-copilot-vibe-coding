@@ -1,4 +1,5 @@
-# 빠른 시작 가이드 🚀
+# Session 1: 빠른 시작 가이드 🚀
+## ⏰ 소요 시간: 10분 (0:25 – 0:35)
 
 > 💡 **설치가 완료되셨나요?** 이제 바로 실습을 시작해봅시다!
 
@@ -163,8 +164,8 @@ sessions/
 ### 준비 완료!
 이제 본격적인 실습을 시작할 준비가 되었습니다.
 
-### Session 1로 이동
-👉 [`session1_meeting_notes.md`](session1_meeting_notes.md) 파일을 열어주세요!
+### Session 2로 이동
+👉 [`session2_meeting_notes.md`](session2_meeting_notes.md) 파일을 열어주세요!
 
 **첫 번째 실습**: 회의록을 5분 만에 자동으로 정리하기
 
@@ -229,6 +230,6 @@ sessions/
 - ✅ 첫 프롬프트를 작성할 수 있습니다
 - ✅ 본격적인 실습을 시작할 준비가 되었습니다
 
-**다음**: Session 1 - 회의록 자동 정리 →
+**다음**: [Session 2: 회의록 자동 정리](session2_meeting_notes.md) →
 
 30분 걸리던 회의록 정리를 5분 만에 끝내봅시다! 🚀

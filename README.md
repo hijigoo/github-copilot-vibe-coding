@@ -33,15 +33,15 @@
 | 단계 | 세션 | 무엇을 배우나요? | 시간 |
 |:---:|------|-----------------|:----:|
 | **준비** | [Session 0: 환경 세팅](sessions/session0_setup.md) | VS Code와 Copilot 설치 | 25분 |
-| **시작** | [Session 0.5: 빠른 시작](sessions/session0.5_quick_start.md) | Copilot 첫 사용법 | 10분 |
-| 📝 | [Session 1: 회의록 자동 정리](sessions/session1_meeting_notes.md) | 30분 회의록을 5분 만에 | 30분 |
-| 📄 | [Session 2: 문서 자동 작성](sessions/session2_document_automation.md) | PRD 문서를 5분 만에 | 30분 |
+| **시작** | [Session 1: 빠른 시작](sessions/session1_quick_start.md) | Copilot 첫 사용법 | 10분 |
+| 📝 | [Session 2: 회의록 자동 정리](sessions/session2_meeting_notes.md) | 30분 회의록을 5분 만에 | 30분 |
+| 📄 | [Session 3: 문서 자동 작성](sessions/session3_document_automation.md) | PRD 문서를 5분 만에 | 30분 |
 | ☕ | **휴식** | 커피 한 잔 | 15분 |
-| 🔍 | [Session 3: UX 리서치 분석](sessions/session3_ux_research.md) | 사용자 피드백 자동 분석 | 25분 |
-| 📊 | [Session 4: 데이터 분석](sessions/session4_csv_report.md) | CSV 데이터 → 차트 | 25분 |
-| 🌐 | [Session 5: 웹 애플리케이션](sessions/session5_web_app.md) | 나만의 웹페이지 만들기 | 30분 |
-| 🤖 | [Session 6: 업무 자동화](sessions/session6_automation.md) | 반복 작업 자동화 | 20분 |
-| 🔄 | [Session 7: 워크플로우 통합](sessions/session7_workflow.md) | 모든 기술 연결하기 | 20분 |
+| 🔍 | [Session 4: UX 리서치 분석](sessions/session4_ux_research.md) | 사용자 피드백 자동 분석 | 30분 |
+| 📊 | [Session 5: 데이터 분석](sessions/session5_csv_report.md) | CSV 데이터 → 차트 | 30분 |
+| 🌐 | [Session 6: 웹 애플리케이션](sessions/session6_web_app.md) | 나만의 웹페이지 만들기 | 30분 |
+| 🤖 | [Session 7: 업무 자동화](sessions/session7_automation.md) | 반복 작업 자동화 | 30분 |
+| 🔄 | [Session 8: 워크플로우 통합](sessions/session8_workflow.md) | 모든 기술 연결하기 | 20분 |
 
 ---
 
@@ -61,10 +61,10 @@
 - 첫 프롬프트 작성하기
 - 실습 준비 완료!
 
-👉 **[Session 0.5: 빠른 시작 바로가기](sessions/session0.5_quick_start.md)**
+👉 **[Session 1: 빠른 시작 바로가기](sessions/session1_quick_start.md)**
 
 ### 3️⃣ 실습하기
-Session 1부터 차례대로 따라하면서 배웁니다.
+Session 2부터 차례대로 따라하면서 배웁니다.
 - 각 세션은 독립적으로 진행 가능
 - 원하는 세션부터 시작해도 OK
 - 모든 샘플 데이터 제공
@@ -143,21 +143,18 @@ Copilot과 효과적으로 대화하는 방법을 배웁니다.
 ```
 github-copilot-workshop/
 ├── README.md                          # 👈 지금 보고 있는 파일
-├── START_HERE.md                      # 시작 가이드
 │
 ├── sessions/                          # 📚 실습 세션
-│   ├── session0_setup.md             # 환경 세팅
-│   ├── session0.5_quick_start.md     # 빠른 시작
-│   ├── session1_meeting_notes.md     # 회의록 정리
-│   ├── session2_document_automation.md  # 문서 작성
-│   ├── session3_ux_research.md       # UX 분석
-│   ├── session4_csv_report.md        # 데이터 분석
-│   ├── session5_web_app.md           # 웹 앱
-│   ├── session6_automation.md        # 자동화
-│   ├── session7_workflow.md          # 워크플로우
+│   ├── session0_setup.md             # 환경 세팅 (25분)
+│   ├── session1_quick_start.md       # 빠른 시작 (10분)
+│   ├── session2_meeting_notes.md     # 회의록 정리 (30분)
+│   ├── session3_document_automation.md  # 문서 작성 (30분)
+│   ├── session4_ux_research.md       # UX 분석 (30분)
+│   ├── session5_csv_report.md        # 데이터 분석 (30분)
+│   ├── session6_web_app.md           # 웹 앱 (30분)
+│   ├── session7_automation.md        # 자동화 (30분)
+│   ├── session8_workflow.md          # 워크플로우 (20분)
 │   └── data/                         # 📊 실습 데이터
-│
-└── samples/                           # 📁 추가 샘플
 ```
 
 ---

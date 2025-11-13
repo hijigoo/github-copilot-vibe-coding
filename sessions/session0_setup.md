@@ -202,10 +202,10 @@ pip list
 ## 🚀 다음 단계
 
 ### 바로 시작하고 싶으신가요?
-👉 **[빠른 시작 가이드](session0.5_quick_start.md)** - 10분이면 Copilot 사용법 마스터!
+👉 **[Session 1: 빠른 시작 가이드](session1_quick_start.md)** - 10분이면 Copilot 사용법 마스터!
 
 ### 본격적인 실습 시작
-👉 **[Session 1: 회의록 자동 정리](session1_meeting_notes.md)** - 30분 작업을 5분으로!
+👉 **[Session 2: 회의록 자동 정리](session2_meeting_notes.md)** - 30분 작업을 5분으로!
 
 ---
 
@@ -270,4 +270,4 @@ pip show pandas
 
 ---
 
-**다음**: [빠른 시작 가이드](session0.5_quick_start.md) 또는 [Session 1](session1_meeting_notes.md) →
+**다음**: [Session 1: 빠른 시작 가이드](session1_quick_start.md) 또는 [Session 2: 회의록 정리](session2_meeting_notes.md) →
