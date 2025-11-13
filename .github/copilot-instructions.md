@@ -1,3 +1,7 @@
+# Copilot 워크숍 가이드라인
+
+## 세션 파일 포맷
+
 [소개] 와 [마무리] 를 제외한 각 세션 파일의 튜토리얼은 아래 포맷을 따릅니다.
 
 ⏰ 소요 시간
@@ -9,5 +13,63 @@
 
 세션 내용에서 예상 결과인 markdown 이나 html 은 [스크린샷 제목] 과 같이 Placeholder 로 대신합니다. 
 
+수정마다 간단한 커밋메시지를 작성하고 푸시합니다.
 
-수장마다 간단한 커밋메시지를 작성하고 푸시합니다. 
+---
+
+## Python 가상환경 관리
+
+이 워크숍의 모든 Python 코드는 `.venv` 가상환경에서 실행됩니다.
+
+### 가상환경 사용 원칙
+
+1. **패키지 설치 시**: 반드시 `.venv`가 활성화된 상태에서 설치
+2. **코드 실행 시**: 반드시 `.venv`가 활성화된 상태에서 실행
+3. **터미널 확인**: 프롬프트 앞에 `(.venv)` 표시 확인
+
+### 가상환경 활성화 방법
+
+**macOS/Linux**:
+```bash
+source .venv/bin/activate
+```
+
+**Windows PowerShell**:
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+**Windows CMD**:
+```cmd
+.venv\Scripts\activate.bat
+```
+
+### Copilot 답변 시 가이드
+
+Python 관련 질문에 답변할 때:
+1. 가상환경 활성화 여부를 먼저 확인하도록 안내
+2. 패키지 설치 명령 전에 `(.venv)` 확인 언급
+3. 에러 발생 시 가상환경 미활성화 가능성 체크
+
+**예시 답변 형식**:
+```
+1. 먼저 가상환경이 활성화되어 있는지 확인하세요.
+   터미널에 (.venv)가 표시되어야 합니다.
+   
+2. 가상환경이 비활성화되어 있다면:
+   source .venv/bin/activate  # macOS/Linux
+   
+3. 이제 패키지를 설치합니다:
+   pip install [package-name]
+```
+
+### 디렉토리 구조
+
+```
+workshop/
+├── .venv/              # 가상환경 (Git 제외)
+├── sessions/           # 세션 문서
+├── data/              # 샘플 데이터
+└── .github/
+    └── copilot-instructions.md
+``` 
