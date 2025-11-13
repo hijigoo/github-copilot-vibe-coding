@@ -421,7 +421,7 @@ meeting_template.md 파일로 저장해줘.
 
 ## 📚 다음 세션 미리보기
 
-**Session 2: 문서 자동 작성**에서는:
+**Session 3: 문서 자동 작성**에서는:
 - PRD (Product Requirements Document) 5분 만에 작성
 - 기획서 구조를 Copilot이 자동으로 제안
 - 문체 변환 (공식/비공식 톤)
