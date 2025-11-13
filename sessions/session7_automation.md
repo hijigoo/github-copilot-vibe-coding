@@ -182,20 +182,20 @@ except Exception as e:
 회의 주제: Q4 마케팅 전략 논의
 
 참석자:
-- 김민수 (minsu.kim@yeogi.com) - 마케팅 팀장
-- 이지은 (jieun.lee@yeogi.com) - PO
-- 박준형 (jun.park@yeogi.com) - 개발팀장
+- 김민수 (minsu.kim@company.com) - 마케팅 팀장
+- 이지은 (jieun.lee@company.com) - PO
+- 박준형 (jun.park@company.com) - 개발팀장
 - 최수진 사외 협력사 (sujin.choi@partner.com)
 
 추가 참조:
-support@yeogi.com
+support@company.com
 info@company.co.kr
 
 다음 회의 참석 예정:
-- 정다혜 (dahye.jung@yeogi.com)
+- 정다혜 (dahye.jung@company.com)
 - 한승우 외부 컨설턴트 (consultant@external.com)
 
-문의사항은 contact@yeogi.com으로 보내주세요.
+문의사항은 contact@company.com으로 보내주세요.
 ```
 </details>
 
