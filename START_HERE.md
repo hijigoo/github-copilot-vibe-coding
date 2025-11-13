@@ -16,12 +16,14 @@
 0:55 - 1:27   Session 2: 문서 자동 작성 (PRD)
 1:27 - 1:42   ☕ 휴식
 1:42 - 2:10   Session 3: UX 피드백 자동 분석
-2:10 - 2:37   Session 4: CSV 데이터 분석 & 시각화
-2:37 - 2:57   Session 5: 반복 작업 자동화
-2:57 - 3:15   Session 6: 실전 워크플로우 통합
+2:10 - 2:40   Session 4: CSV 데이터 분석 & 시각화
+2:40 - 3:10   Session 5: 간단한 웹 애플리케이션 만들기
+3:10 - 3:40   Session 6: 반복 작업 자동화
+3:40 - 4:00   Session 7: 실전 워크플로우 통합
 ```
 
-**총 시간**: 3시간 15분 (휴식 포함)
+**총 시간**: 4시간 (휴식 포함)
+**실습 세션**: 3시간 45분
 
 ---
 
@@ -47,11 +49,16 @@
 - CSV 파일 자동 분석
 - 차트와 그래프 자동 생성
 
-### Session 5: 업무 자동화
+### Session 5: 웹 애플리케이션 만들기
+- Flask로 간단한 웹 서버 구축
+- 할 일 관리 앱 제작
+- 브라우저에서 바로 실행
+
+### Session 6: 업무 자동화
 - 반복 작업 스크립트 작성
 - 이메일 자동 추출 등
 
-### Session 6: 워크플로우 통합
+### Session 7: 워크플로우 통합
 - 모든 기술을 하나로 연결
 - 나만의 자동화 워크플로우 설계
 
@@ -82,8 +89,9 @@ yeogi-hackathon/
 │   ├── session2_document_automation.md
 │   ├── session3_ux_research.md
 │   ├── session4_csv_report.md
-│   ├── session5_automation.md
-│   ├── session6_workflow.md
+│   ├── session5_web_app.md
+│   ├── session6_automation.md
+│   ├── session7_workflow.md
 │   └── data/           # 실습용 샘플 데이터
 └── samples/            # 추가 샘플 파일
 ```

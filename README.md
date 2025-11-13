@@ -1,4 +1,4 @@
-# GitHub Copilot 워크숍 - 여기어때컴퍼니
+# GitHub Copilot 워크숍
 
 > 🚀 **처음 오셨나요?** [`START_HERE.md`](START_HERE.md) 파일부터 읽어보세요!
 
@@ -6,11 +6,11 @@
 
 ## 📚 프로젝트 개요
 
-여기어때컴퍼니 비개발자(PO/UX/마케팅) 대상 GitHub Copilot 실전 활용 교육 자료입니다.
+비개발자(PO/UX/마케터 등)를 위한 GitHub Copilot 실전 활용 교육 자료입니다.
 
-**교육 일정**: 2024년 11월 말 ~ 12월 초 (12/11 해커톤 사전 교육)  
-**교육 시간**: 3시간 15분 (휴식 포함)  
-**참가 인원**: 45명 (PO 16명 + UX 16명 + 마케터 1명 + 개발자 28명)
+**대상**: 코딩 경험이 없는 비개발자  
+**목표**: AI로 업무 자동화 및 생산성 향상  
+**특징**: 100% 실습 중심, 즉시 활용 가능한 실전 예제
 
 ---
 
@@ -45,30 +45,49 @@ yeogi-hackathon/
 
 ---
 
-## 🎯 교육 목표
+## 🎯 학습 목표
 
-비개발자가 GitHub Copilot을 활용하여:
-1. **문서 작업 자동화** - 회의록, PRD, 보고서를 5분 만에 작성
-2. **데이터 분석 간소화** - UX 리서치, 설문 데이터 자동 분석
-3. **반복 업무 자동화** - Excel 처리, 파일 정리 등 스크립트 생성
-4. **개인별 워크플로 설계** - 일일/주간 업무 루틴에 Copilot 통합
+이 워크샵을 통해 다음을 배웁니다:
+
+### 핵심 역량
+1. **AI 프롬프트 작성** - Copilot과 효과적으로 대화하는 방법
+2. **문서 자동화** - 회의록, PRD, 보고서를 5분 만에 작성
+3. **데이터 분석** - Python으로 데이터 분석 및 시각화
+4. **웹 개발 기초** - 간단한 웹 애플리케이션 만들기
+5. **업무 자동화** - 반복 작업을 스크립트로 자동화
+6. **워크플로우 설계** - 여러 기술을 통합한 자동화 시스템
+
+### 기대 효과
+- ⏱️ **시간 절약**: 주당 17시간 이상 절약
+- 📈 **생산성 향상**: 반복 작업 자동화
+- 💡 **새로운 가능성**: 코딩으로 문제 해결
+- 🎨 **창의적 업무**: 단순 작업에서 벗어나 전략적 업무에 집중
 
 ---
 
 ## 📘 세션 구성
 
-| 시간 | 세션 | 주요 내용 | 결과물 |
-|------|------|-----------|--------|
-| 0:00-0:25 | **Session 0** | 환경 세팅 & 첫 프롬프트 | `hello_copilot.md` |
-| 0:25-0:55 | **Session 1** | 회의록 자동 정리 | `meeting_action_items.md` |
-| 0:55-1:27 | **Session 2** | PRD 5분 만에 작성 | `feature_prd.md` |
-| 1:27-1:42 | ☕ **Break** | 휴식 | - |
-| 1:42-2:10 | **Session 3** | UX 피드백 자동 분석 | `ux_insights.md`, `ux_analysis.py` |
-| 2:10-2:37 | **Session 4** | CSV 데이터 분석 & 시각화 | `satisfaction_report.png` |
-| 2:37-2:57 | **Session 5** | 반복 작업 자동화 | `email_extraction.py` |
-| 2:57-3:15 | **Session 6** | 실전 워크플로우 통합 | `workflow_automation.py` |
+### 전체 실습 환경
+모든 세션은 **Python 가상환경 (.venv)**에서 진행됩니다.
+- 독립적인 실습 환경
+- 시스템 Python과 분리
+- 패키지 충돌 방지
 
-**총 소요 시간**: 3시간 13분 (여유 시간 2분 포함) ✅
+### 세션 목록
+
+| # | 세션 | 주요 내용 | 결과물 | 시간 |
+|---|------|-----------|--------|------|
+| 0 | **환경 세팅** | VS Code, Copilot, 가상환경 설정 | `.venv/` 생성 | 25분 |
+| 1 | **회의록 자동 정리** | Action Item 추출, 구조화 | `meeting_action_items.md` | 30분 |
+| 2 | **문서 자동 작성** | PRD 5분 만에 완성 | `feature_prd.md` | 30분 |
+| - | ☕ **Break** | 휴식 | - | 15분 |
+| 3 | **UX 리서치 분석** | 사용자 피드백 자동 분석 | `ux_insights.md` | 25분 |
+| 4 | **데이터 분석 & 시각화** | CSV → 차트 자동 생성 | `report.png` | 25분 |
+| 5 | **웹 애플리케이션** | 간단한 웹페이지 만들기 | `app.py`, `index.html` | 30분 |
+| 6 | **반복 작업 자동화** | 이메일 추출, 파일 정리 | `automation.py` | 20분 |
+| 7 | **실전 워크플로우** | 모든 기술 통합 | `workflow.py` | 20분 |
+
+**총 소요 시간**: 약 3시간 40분 (휴식 포함)
 
 ---
 
@@ -89,35 +108,61 @@ yeogi-hackathon/
 
 ### 설치 가이드
 
-1. **VS Code 설치**
-   ```bash
-   # macOS (Homebrew 사용 시)
-   brew install --cask visual-studio-code
-   
-   # 또는 공식 웹사이트에서 다운로드
-   # https://code.visualstudio.com/Download
-   ```
+#### 1. VS Code 설치
+```bash
+# macOS (Homebrew 사용 시)
+brew install --cask visual-studio-code
 
-2. **GitHub Copilot 확장 설치**
-   - VS Code 실행
-   - Extensions (`⌘+Shift+X`) 열기
-   - "GitHub Copilot" 검색 및 설치
-   - "GitHub Copilot Chat" 검색 및 설치
-   - GitHub 계정으로 로그인
+# 또는 공식 웹사이트에서 다운로드
+# https://code.visualstudio.com/Download
+```
 
-3. **Python 설치** (Session 4, 5 필요)
-   ```bash
-   # macOS
-   brew install python
-   
-   # Windows
-   # https://www.python.org/downloads/
-   ```
+#### 2. GitHub Copilot 확장 설치
+- VS Code 실행
+- Extensions (`⌘+Shift+X` 또는 `Ctrl+Shift+X`) 열기
+- "GitHub Copilot" 검색 및 설치
+- "GitHub Copilot Chat" 검색 및 설치
+- GitHub 계정으로 로그인
 
-4. **필요한 Python 패키지**
-   ```bash
-   pip install pandas matplotlib
-   ```
+#### 3. Python 설치
+```bash
+# macOS
+brew install python
+
+# Windows
+# https://www.python.org/downloads/ 에서 다운로드
+# "Add Python to PATH" 옵션 체크!
+
+# 설치 확인
+python --version  # 또는 python3 --version
+```
+
+#### 4. 가상환경 설정 (중요!)
+```bash
+# 프로젝트 폴더로 이동
+cd yeogi-hackathon
+
+# 가상환경 생성
+python -m venv .venv
+
+# 가상환경 활성화
+# macOS/Linux:
+source .venv/bin/activate
+
+# Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+
+# Windows (CMD):
+.venv\Scripts\activate.bat
+
+# 가상환경이 활성화되면 (.venv)가 터미널 앞에 표시됩니다
+```
+
+#### 5. 필요한 패키지 설치
+```bash
+# 가상환경 활성화 후 실행
+pip install pandas matplotlib flask
+```
 
 ---
 
@@ -134,7 +179,7 @@ yeogi-hackathon/
 
 ### 3단계: 다음 세션으로
 - 한 세션이 끝나면 다음 세션으로 넘어갑니다
-- Session 0 → 1 → 2 → (휴식) → 3 → 4 → 5 → 6
+- Session 0 → 1 → 2 → (휴식) → 3 → 4 → 5 → 6 → 7
 
 ### 💡 도움이 필요하면?
 - 각 세션 문서의 "자주 묻는 질문" 섹션을 확인하세요
@@ -164,16 +209,16 @@ yeogi-hackathon/
 
 ---
 
-## 📊 실제 검증된 효과
+## 📊 기대 효과
 
-### 시간 절약 (Dry-Run 검증 완료)
-- 회의록 정리: 30분 → 5분 (**83% 단축**) ✅
-- PRD 작성: 2시간 → 5분 (**96% 단축**) ✅
-- UX 데이터 분석: 5.5시간 → 18분 (**95% 단축**) ✅
-- CSV 데이터 분석: 5시간 → 20분 (**93% 단축**) ✅
-- 이메일 추출: 65분 → 3초 (**99.9% 단축**) ✅
-- 통합 워크플로우: 4.5시간 → 1초 (**99.99% 단축**) ✅
-- **주당 평균 17시간 이상 절약** (평균 94.5% 절약률)
+### 시간 절약
+- 회의록 정리: 30분 → 5분 (**83% 단축**)
+- PRD 작성: 2시간 → 5분 (**96% 단축**)
+- UX 데이터 분석: 5.5시간 → 18분 (**95% 단축**)
+- CSV 데이터 분석: 5시간 → 20분 (**93% 단축**)
+- 웹 페이지 제작: 2일 → 30분 (**99% 단축**)
+- 이메일 추출: 65분 → 3초 (**99.9% 단축**)
+- **주당 평균 17시간 이상 절약 가능**
 
 ### 품질 향상
 - 일관된 문서 형식
@@ -215,18 +260,9 @@ yeogi-hackathon/
 
 ---
 
-## 📞 문의
+##  라이선스
 
-**교육 담당**: 여기어때컴퍼니 기술기획팀 크림슨  
-**교육 일정**: 2024년 11월 말 ~ 12월 초  
-**교육 장소**: 오프라인 (여기어때 사옥 또는 별도 장소)  
-**해커톤 일정**: 2024년 12월 11일 (목)
-
----
-
-## 📝 라이선스
-
-이 교육 자료는 여기어때컴퍼니의 내부 교육용으로 제작되었습니다.
+이 교육 자료는 GitHub Copilot 학습용으로 자유롭게 사용하실 수 있습니다.
 
 ---
 
@@ -239,18 +275,18 @@ yeogi-hackathon/
 
 바랍니다!
 
-**해커톤에서의 성공을 응원합니다!** 🚀
+**GitHub Copilot과 함께 더 효율적으로 일하세요!** 🚀
 
 ---
 
 ## 📂 주요 문서
 
-- [`sessions/`](sessions/) - 세션별 실습 가이드 (Session 0-6) ⭐
+- [`sessions/`](sessions/) - 세션별 실습 가이드 (Session 0-7) ⭐
 - [`sessions/data/`](sessions/data/) - 실습용 샘플 데이터
 - [`samples/`](samples/) - 추가 샘플 파일
 
 ---
 
-**버전**: v2.1  
-**최종 업데이트**: 2024년 11월 13일  
+**버전**: v3.0  
+**최종 업데이트**: 2024년 11월  
 **작성**: GitHub Copilot Workshop Team
