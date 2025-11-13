@@ -1,24 +1,39 @@
 2024년 11월 주간 회의 참석자
 
-회의 주제: Q4 마케팅 전략 논의
+회의 주제: Q4 마케팅 전략 논의 및 신규 프로젝트 킥오프
 
 참석자:
-- 김민수 (minsu.kim@yeogi.com) - 마케팅 팀장
-- 이지은 (jieun.lee@yeogi.com) - PO
-- 박준형 (jun.park@yeogi.com) - 개발팀장
+- 김민수 (minsu.kim@company.com) - 마케팅 팀장
+- 이지은 (jieun.lee@company.com) - PO
+- 박준형 (jun.park@company.com) - 개발팀장
 - 최수진 사외 협력사 (sujin.choi@partner.com)
+- 강미래 (mirae.kang@company.com) - UX 리드
+- 윤석진 (seokjin.yoon@company.com) - 데이터 분석가
 
 추가 참조:
-support@yeogi.com
+support@company.com
 info@company.co.kr
+marketing@company.com
 
 다음 회의 참석 예정:
-- 정다혜 (dahye.jung@yeogi.com)
+- 정다혜 (dahye.jung@company.com) - 신규 입사자
 - 한승우 외부 컨설턴트 (consultant@external.com)
+- 조아름 (ahreum.jo@company.com) - 콘텐츠 마케터
 
-문의사항은 contact@yeogi.com으로 보내주세요.
+문의사항은 contact@company.com으로 보내주세요.
 
-급한 건은 김민수 팀장 (minsu.kim@yeogi.com, 010-1234-5678) 에게 연락 바랍니다.
+급한 건은 김민수 팀장 (minsu.kim@company.com, 010-1234-5678) 에게 연락 바랍니다.
 
-참고 문서: https://docs.yeogi.com/q4-strategy
-프로젝트 관리: project.manager@yeogi.com
+프로젝트 관련:
+- 기술 문의: tech@company.com
+- 디자인 협업: design@company.com  
+- 마케팅 협업: marketing@company.com
+
+외부 파트너:
+- 개발 협력사: dev@partner.com
+- 디자인 에이전시: creative@agency.com
+- 광고 대행사: ads@marketing-agency.com
+
+참고 문서: https://docs.company.com/q4-strategy
+프로젝트 관리: project.manager@company.com
+협업 도구: team@company.com
