@@ -1,14 +1,18 @@
-# Session 0: 환경 세팅 & Hello Copilot
-## ⏰ 소요 시간: 25분 (0:00 – 0:25)
+# Session 0: 환경 세팅
+## ⏰ 소요 시간: 25분
+
+> 💡 **설치 후 바로 사용하고 싶으신가요?**  
+> 이 세션이 끝나면 **[빠른 시작 가이드](session0.5_quick_start.md)**로 이동하세요!
 
 ---
 
 ## 🎯 학습 목표
 
-이 세션을 마치면 다음을 할 수 있습니다:
-- ✅ GitHub Copilot이 활성화된 VS Code 환경 구축
-- ✅ Copilot Chat과 Inline Suggestions의 차이 이해
-- ✅ 첫 프롬프트를 작성하여 간단한 문서 생성
+이 세션을 마치면:
+- ✅ VS Code 설치 완료
+- ✅ GitHub Copilot 확장 설치 완료
+- ✅ Python 환경 구축 완료
+- ✅ 실습 준비 완료
 
 ---
 
@@ -79,200 +83,191 @@
   - 🔴 **빨간색**: 비활성화 또는 오류
 
 ### Copilot Chat 패널 열기
-1. 단축키: `⌘ + Shift + I` (macOS) / `Ctrl + Shift + I` (Windows)
+1. 단축키: `⌘ + I` (macOS) / `Ctrl + I` (Windows)
 2. 또는 왼쪽 사이드바에서 **Chat 아이콘** 클릭
 3. Chat 창이 열리면 "Hello, Copilot!" 입력하여 응답 확인
 
 ---
 
-## 🎓 Step 4: Copilot Chat vs Inline Suggestions 이해하기 (5분)
+## 🐍 Step 4: Python 설치하기 (5분)
 
-### 1. Copilot Chat (대화형 도우미)
-**특징**:
-- 자연어로 질문하고 대화
-- 긴 설명이나 코드 생성
-- 파일 전체를 분석하고 제안
+### macOS 사용자
+```bash
+# Homebrew로 설치 (권장)
+brew install python
 
-**사용 시나리오**:
-- "이 회의록을 요약해줘"
-- "PRD 문서 템플릿 만들어줘"
-- "이 데이터를 분석하고 인사이트 도출해줘"
-
-**실습**: Chat 패널에서 다음 입력해보기
-```
-"안녕하세요! GitHub Copilot이 뭐예요?"
+# 설치 확인
+python3 --version
+# 출력 예: Python 3.11.x
 ```
 
----
+### Windows 사용자
+1. [Python 공식 사이트](https://www.python.org/downloads/) 방문
+2. "Download Python" 버튼 클릭
+3. 설치 프로그램 실행
+4. **중요**: "Add Python to PATH" 체크박스 반드시 선택!
+5. "Install Now" 클릭
 
-### 2. Inline Suggestions (코드 작성 중 자동완성)
-**특징**:
-- 타이핑하면 자동으로 제안 표시
-- Tab 키로 수락
-- 짧은 코드나 텍스트 완성
-
-**사용 시나리오**:
-- 주석 작성 후 코드 자동 완성
-- 반복적인 패턴 빠르게 작성
-
-**실습**: 
-1. 새 파일 만들기 (`⌘ + N` / `Ctrl + N`)
-2. 파일 형식을 Markdown으로 설정 (`⌘ + K, M` → "markdown" 입력)
-3. 다음 텍스트 입력 후 Enter:
-   ```
-   # 오늘의 회의 주제:
-   ```
-4. Copilot이 자동으로 제안하는 내용 확인
-5. `Tab` 키로 수락 또는 `Esc`로 무시
-
----
-
-## 💪 Step 5: 첫 프롬프트 실습하기 (8분)
-
-### 미션: 회의 메모를 Markdown 문서로 요약하기
-
-#### 시나리오
-여러분은 방금 팀 회의를 마쳤습니다. 메모한 내용을 정리하여 팀원들과 공유해야 합니다.
-
-#### 샘플 회의 메모 (복사해서 사용)
-```
-2024년 11월 13일 신규 숙박 검색 기능 개선 회의
-
-참석자: 김민수(PO), 이지혜(UX), 박준형(개발), 최수진(마케터)
-
-논의 내용:
-- 사용자들이 지역 검색할 때 자동완성이 너무 느림
-- 모바일에서 필터 버튼 위치가 불편하다는 피드백 다수
-- 경쟁사 대비 검색 속도 3초 더 걸림
-- 다음 스프린트에 검색 성능 개선 우선 반영
-- UX팀에서 필터 UI 재설계안 다음주 금요일까지 제출
-- 마케팅팀은 개선 후 프로모션 계획 수립
-
-다음 회의: 11월 20일 오전 10시
+### 설치 확인
+터미널(또는 Command Prompt)에서:
+```bash
+python --version
+# 또는
+python3 --version
 ```
 
 ---
 
-### 실습 단계
+## 📦 Step 5: 가상환경 설정하기 (8분)
 
-#### 1단계: 새 파일 만들기
-```
-⌘ + N (macOS) / Ctrl + N (Windows)
-```
+### 가상환경이란?
+- 프로젝트마다 독립적인 Python 환경
+- 패키지 충돌 방지
+- 시스템 Python을 건드리지 않음
 
-#### 2단계: Copilot Chat 열기
-```
-⌘ + Shift + I (macOS) / Ctrl + Shift + I (Windows)
-```
+### 가상환경 생성
 
-#### 3단계: Chat에 프롬프트 입력
-```
-위의 회의 메모를 아래 형식으로 정리해줘:
+1. **터미널 열기**: VS Code에서 `` ⌘+` `` (macOS) 또는 ``Ctrl+` `` (Windows)
 
-1. 회의 정보 (날짜, 참석자)
-2. 주요 논의 사항 (bullet points)
-3. 결정 사항
-4. 액션 아이템 (담당자, 마감일)
-
-Markdown 형식으로 작성해줘.
+2. **프로젝트 폴더로 이동**:
+```bash
+# 다운로드 받은 프로젝트 폴더로 이동
+cd /path/to/workshop
 ```
 
-#### 4단계: 결과를 파일에 복사
-- Copilot이 생성한 내용을 복사 (Copy 버튼 클릭)
-- 새 파일에 붙여넣기
-
-#### 5단계: 파일 저장
+3. **가상환경 생성**:
+```bash
+# Python 3으로 .venv 폴더 생성
+python3 -m venv .venv
 ```
-⌘ + S (macOS) / Ctrl + S (Windows)
-파일명: hello_copilot.md
+
+### 가상환경 활성화
+
+**macOS/Linux**:
+```bash
+source .venv/bin/activate
+```
+
+**Windows (PowerShell)**:
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+**Windows (CMD)**:
+```cmd
+.venv\Scripts\activate.bat
+```
+
+### ✅ 활성화 확인
+터미널 프롬프트 앞에 `(.venv)`가 표시되면 성공!
+```bash
+(.venv) username@computer:~/workshop$
 ```
 
 ---
 
-## 🎯 예상 결과물 예시
+## 📚 Step 6: 필수 패키지 설치하기 (5분)
 
-```markdown
-# 신규 숙박 검색 기능 개선 회의
+가상환경이 활성화된 상태에서:
 
-## 📅 회의 정보
-- **날짜**: 2024년 11월 13일
-- **참석자**: 김민수(PO), 이지혜(UX), 박준형(개발), 최수진(마케터)
-
-## 💬 주요 논의 사항
-- 지역 검색 시 자동완성 속도 저하 문제
-- 모바일 필터 버튼 위치 사용성 이슈
-- 경쟁사 대비 검색 속도 3초 지연
-- 사용자 피드백 기반 우선순위 조정 필요
-
-## ✅ 결정 사항
-- 다음 스프린트에 검색 성능 개선 최우선 반영
-- 필터 UI 재설계 진행
-
-## 📋 액션 아이템
-| 담당자 | 작업 내용 | 마감일 |
-|--------|-----------|--------|
-| 박준형 | 검색 성능 개선 개발 | 다음 스프린트 종료 |
-| 이지혜 | 필터 UI 재설계안 제출 | 11월 20일 (금) |
-| 최수진 | 개선 후 프로모션 계획 수립 | TBD |
-
-## 🔄 다음 회의
-- **일정**: 11월 20일 (수) 오전 10시
+```bash
+# pandas: 데이터 분석
+# matplotlib: 데이터 시각화
+# flask: 웹 애플리케이션
+pip install pandas matplotlib flask
 ```
+
+### 설치 확인
+```bash
+pip list
+```
+
+다음 패키지들이 보이면 성공:
+- pandas
+- matplotlib  
+- flask
 
 ---
 
 ## 🎉 축하합니다!
 
-첫 번째 세션을 완료했습니다! 이제 여러분은:
-- ✅ GitHub Copilot을 실무에 사용할 준비가 되었습니다
-- ✅ Chat과 Inline의 차이를 이해했습니다
-- ✅ 첫 문서를 Copilot으로 생성했습니다
+환경 설정을 완료했습니다! 이제 여러분은:
+- ✅ VS Code 준비 완료
+- ✅ GitHub Copilot 사용 가능
+- ✅ Python 환경 구축 완료
+- ✅ 모든 실습 준비 완료
 
 ---
 
-## 🔍 자주 묻는 질문 (FAQ)
+## 🚀 다음 단계
 
-### Q1: Copilot이 응답하지 않아요
-**A**: 다음을 확인하세요:
-- 인터넷 연결 상태
-- GitHub 로그인 상태 (오른쪽 하단 아이콘)
-- Copilot 라이선스 활성화 여부
+### 바로 시작하고 싶으신가요?
+👉 **[빠른 시작 가이드](session0.5_quick_start.md)** - 10분이면 Copilot 사용법 마스터!
 
-### Q2: Inline Suggestions가 보이지 않아요
-**A**: 설정 확인:
-1. `⌘ + ,` (설정 열기)
-2. "copilot" 검색
-3. "Editor: Inline Suggest" → "Enabled" 체크
-
-### Q3: 한글로 프롬프트를 써도 되나요?
-**A**: 네! Copilot은 한글을 완벽하게 이해합니다. 편한 언어로 작성하세요.
+### 본격적인 실습 시작
+👉 **[Session 1: 회의록 자동 정리](session1_meeting_notes.md)** - 30분 작업을 5분으로!
 
 ---
 
-## 📚 다음 세션 미리보기
+## 🔍 자주 묻는 질문
 
-**Session 1: 회의록 자동 정리**에서는:
-- 실제 회의록에서 Action Item 자동 추출
-- 담당자별 작업 테이블 생성
-- 회의록 템플릿 만들기
+### Q: Python 버전이 낮은데 괜찮나요?
+**A**: Python 3.8 이상이면 모든 실습이 가능합니다.
 
-준비물: 없음 (바로 시작 가능)
+### Q: 가상환경을 꼭 사용해야 하나요?
+**A**: 네! 가상환경을 사용하면:
+- 시스템 Python을 보호
+- 패키지 버전 충돌 방지
+- 프로젝트 독립성 유지
+
+### Q: 가상환경 활성화를 잊어버렸어요
+**A**: 터미널 앞에 `(.venv)`가 없으면 비활성화된 것입니다.  
+Step 5의 활성화 명령어를 다시 실행하세요.
+
+### Q: pip install이 실패해요
+**A**: 다음을 시도해보세요:
+```bash
+# Python 버전 명시
+python3 -m pip install pandas matplotlib flask
+
+# 또는 업그레이드 후 재시도
+pip install --upgrade pip
+pip install pandas matplotlib flask
+```
+
+### Q: Windows에서 PowerShell 실행 정책 에러가 나요
+**A**: PowerShell을 관리자 권한으로 열고:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
 ---
 
-## 💡 팁: 처음 사용자를 위한 프롬프트 작성 가이드
+## 💡 유용한 명령어
 
-**좋은 프롬프트**:
-- ✅ "이 회의록을 Markdown 표로 정리해줘"
-- ✅ "주요 결정 사항 3가지만 뽑아줘"
-- ✅ "공식 문서 톤으로 다시 작성해줘"
+### 가상환경 관련
+```bash
+# 가상환경 비활성화
+deactivate
 
-**개선이 필요한 프롬프트**:
-- ❌ "정리해줘" (무엇을 정리할지 불명확)
-- ❌ "좀 바꿔줘" (어떻게 바꿀지 구체적이지 않음)
+# 가상환경 다시 활성화
+source .venv/bin/activate  # macOS/Linux
+.venv\Scripts\activate     # Windows
 
-**핵심**: 구체적이고 명확하게!
+# 설치된 패키지 목록
+pip list
+
+# 특정 패키지 설치 여부 확인
+pip show pandas
+```
+
+### VS Code 터미널
+```bash
+# 새 터미널 열기: Ctrl+Shift+`
+# 터미널 전환: Ctrl+`
+# 터미널 닫기: 터미널 패널에서 휴지통 아이콘
+```
 
 ---
 
-**다음**: [Session 1: 회의록 자동 정리 →](session1_meeting_notes.md)
+**다음**: [빠른 시작 가이드](session0.5_quick_start.md) 또는 [Session 1](session1_meeting_notes.md) →
