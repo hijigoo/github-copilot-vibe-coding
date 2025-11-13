@@ -39,8 +39,8 @@
 | **휴식** | 커피 한 잔 ☕ | 15분 |
 | [Session 4: UX 리서치 분석](sessions/session4_ux_research.md) | 사용자 피드백 자동 분석 | 30분 |
 | [Session 5: 데이터 분석](sessions/session5_csv_report.md) | CSV → HTML 리포트 | 30분 |
-| [Session 6: 제품 관리 도구](sessions/session6_web_app.md) | PO 실무 도구 만들기 | 30분 |
-| [Session 7: 실무 적용](sessions/session7_automation.md) | 종합 복습 & Q&A | 30분 |
+| [Session 6: 제품 아이디어 관리 도구](sessions/session6_web_app.md) | PO 실무 도구 만들기 | 30분 |
+| [Session 7: 실무 적용 & 종합 Q&A](sessions/session7_automation.md) | 워크숍 마무리 & 질의응답 | 30분 |
 
 ---
 
@@ -69,6 +69,14 @@ Session 2부터 차례대로 따라하면서 배웁니다.
 - 각 세션은 독립적으로 진행 가능
 - 원하는 세션부터 시작해도 OK
 - 모든 샘플 데이터 제공
+
+#### 📚 세션별 바로가기
+- 📝 **[Session 2: 회의록 자동 정리](sessions/session2_meeting_notes.md)** - 30분 회의록을 5분 만에
+- 📄 **[Session 3: 문서 자동 작성](sessions/session3_document_automation.md)** - PRD 문서를 5분 만에 작성
+- 🔍 **[Session 4: UX 리서치 분석](sessions/session4_ux_research.md)** - 사용자 피드백 자동 분류 및 분석
+- 📊 **[Session 5: CSV 데이터 분석](sessions/session5_csv_report.md)** - CSV를 HTML 리포트로 변환
+- 🛠️ **[Session 6: 제품 아이디어 관리 도구](sessions/session6_web_app.md)** - PO를 위한 실무 도구 만들기
+- 🎯 **[Session 7: 실무 적용 & 종합 Q&A](sessions/session7_automation.md)** - 워크숍 마무리 및 질의응답
 
 ---
 
@@ -145,8 +153,8 @@ github-copilot-workshop/
 │   ├── session3_document_automation.md  # 문서 작성 (30분)
 │   ├── session4_ux_research.md       # UX 분석 (30분)
 │   ├── session5_csv_report.md        # 데이터 분석 (30분)
-│   ├── session6_web_app.md           # 제품 관리 도구 (30분)
-│   ├── session7_automation.md        # 실무 적용 & Q&A (30분)
+│   ├── session6_web_app.md           # 제품 아이디어 관리 도구 (30분)
+│   ├── session7_automation.md        # 실무 적용 & 종합 Q&A (30분)
 │   └── data/                         # 📊 실습 데이터
 ```
 
@@ -158,6 +166,6 @@ github-copilot-workshop/
 
 ---
 
-**버전**: v4.0  
-**최종 업데이트**: 2025년 11월  
+**버전**: v5.0  
+**최종 업데이트**: 2024년 11월 13일  
 **라이선스**: 자유롭게 사용 가능

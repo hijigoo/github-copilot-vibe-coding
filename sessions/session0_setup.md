@@ -211,7 +211,11 @@ source .venv/bin/activate
 Step 5의 활성화 명령어를 다시 실행하세요.
 
 ### Q: Python 패키지는 언제 설치하나요?
-**A**: **설치할 필요 없습니다!** GitHub Copilot Agent가 코드를 실행할 때 필요한 패키지를 자동으로 설치해줍니다. 여러분은 아무것도 하지 않아도 됩니다.
+**A**: 직접 설치할 필요 없습니다! Copilot Chat에서 코드를 실행할 때 필요한 패키지가 없으면 자동으로 설치하겠냐고 물어봅니다. 
+```
+Install required packages: pandas, matplotlib? (Yes/No)
+```
+이런 메시지가 나오면 **"Yes"** 또는 **"예"**를 선택하면 됩니다. 직접 `pip install` 명령어를 실행할 필요는 없습니다.
 
 ### Q: Windows에서 PowerShell 실행 정책 에러가 나요
 **A**: PowerShell을 관리자 권한으로 열고:
