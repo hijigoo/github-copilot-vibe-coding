@@ -32,14 +32,14 @@
 ## 📋 실습 재료: 사용자 피드백 데이터
 
 ### 방법 1: 샘플 파일 사용 (권장)
-`sessions/data/user_feedback_data.txt` 파일을 열어서 내용을 확인하세요.
+`data/user_feedback_data.txt` 파일을 열어서 내용을 확인하세요.
 
 ### 방법 2: 아래 내용 복사
 
 <details>
 <summary>피드백 데이터 보기 (클릭하여 펼치기)</summary>
 
-```text
+```
 === 숙박 검색 기능 사용자 인터뷰 결과 ===
 
 [사용자 1 - 김지현, 27세, 여성, 직장인]
@@ -104,7 +104,7 @@
 ```
 </details>
 
-**프롬프트 사용 시**: 위의 피드백 데이터 전체를 Copilot Chat에 붙여넣거나, `sessions/data/user_feedback_data.txt` 파일의 내용을 참조하세요.
+**프롬프트 사용 시**: 위의 피드백 데이터 전체를 Copilot Chat에 붙여넣거나, `data/user_feedback_data.txt` 파일의 내용을 참조하세요.
 
 ---
 
@@ -123,7 +123,7 @@ Copilot에게 명령만 하면 **자동으로 분석되고 결과가 나옵니�
 Chat 창에 다음과 같이 요청하세요:
 
 ```
-sessions/data/user_feedback_data.txt 파일을 분석해줘:
+data/user_feedback_data.txt 파일을 분석해줘:
 
 1. 가장 많이 언급된 불만사항 Top 5
 2. 각 불만사항별 언급 횟수
