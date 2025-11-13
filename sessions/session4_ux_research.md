@@ -609,5 +609,5 @@ A/B 테스트 제안서를 작성해줘.
 
 ---
 
-**이전**: [← Session 2: 문서 자동 작성](session2_document_automation.md)  
-**다음**: [Session 4: CSV to HTML Report →](session4_csv_report.md)
+**이전**: [← Session 3: 문서 자동 작성](session3_document_automation.md)  
+**다음**: [Session 5: CSV 데이터 분석 →](session5_csv_report.md)

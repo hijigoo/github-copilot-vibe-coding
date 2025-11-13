@@ -531,5 +531,5 @@ Markdown 형식으로 정리해줘.
 
 ---
 
-**이전**: [← Session 5: 업무 자동화](session5_automation.md)  
-**홈으로**: [커리큘럼 보기](../context/curriculum_v2.md)
+**이전**: [← Session 7: 업무 자동화](session7_automation.md)  
+**홈으로**: [README로 돌아가기](../README.md)

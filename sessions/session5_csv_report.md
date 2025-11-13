@@ -402,5 +402,5 @@ pdfkit 또는 weasyprint 라이브러리 사용.
 
 ---
 
-**이전**: [← Session 3: UX 리서치 분석](session3_ux_research.md)  
-**다음**: [Session 5: 업무 자동화 →](session5_automation.md)
+**이전**: [← Session 4: UX 리서치 분석](session4_ux_research.md)  
+**다음**: [Session 6: 웹 페이지 만들기 →](session6_web_app.md)

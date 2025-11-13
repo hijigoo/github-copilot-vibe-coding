@@ -574,5 +574,5 @@ pwd  # 현재 디렉토리 확인
 
 ---
 
-**이전**: [← Session 4: CSV to HTML Report](session4_csv_report.md)  
-**다음**: [Session 6: 워크플로 설계 →](session6_workflow.md)
+**이전**: [← Session 6: 웹 페이지 만들기](session6_web_app.md)  
+**다음**: [Session 8: 워크플로 설계 →](session8_workflow.md)

@@ -441,5 +441,5 @@ API 명세, 데이터베이스 스키마, 인프라 요구사항을 포함해줘
 
 ---
 
-**이전**: [← Session 1: 회의록 자동 정리](session1_meeting_notes.md)  
-**다음**: [Session 3: UX 리서치 분석 →](session3_ux_research.md)
+**이전**: [← Session 2: 회의록 자동 정리](session2_meeting_notes.md)  
+**다음**: [Session 4: UX 리서치 분석 →](session4_ux_research.md)
