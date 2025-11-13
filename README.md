@@ -1,18 +1,18 @@
-# GitHub Copilot 워크숍 🚀
+# GitHub Copilot 워크숍
 
-> 💡 **코딩 경험이 없어도 괜찮습니다!**  
+> **코딩 경험이 없어도 괜찮습니다!**  
 > AI와 함께 업무를 자동화하고 생산성을 높여보세요.
 
 ---
 
-## 🎯 이 워크숍은 누구를 위한 것인가요?
+## 🎯 누구를 위한 워크숍인가요?
 
-- ✅ **PO/기획자**: 기획서와 PRD를 빠르게 작성하고 싶은 분
-- ✅ **UX/UI 디자이너**: 사용자 리서치 데이터를 효율적으로 분석하고 싶은 분
-- ✅ **마케터**: 데이터 분석과 보고서 작성을 자동화하고 싶은 분
-- ✅ **모든 비개발자**: 반복 작업을 자동화하고 시간을 절약하고 싶은 분
+- **PO/기획자**: 기획서와 PRD를 빠르게 작성하고 싶은 분
+- **UX/UI 디자이너**: 사용자 리서치 데이터를 효율적으로 분석하고 싶은 분
+- **마케터**: 데이터 분석과 보고서 작성을 자동화하고 싶은 분
+- **모든 비개발자**: 반복 작업을 자동화하고 시간을 절약하고 싶은 분
 
-**코딩 경험 불필요** | **실습 중심** | **바로 활용 가능**
+**코딩 경험 불필요** | **강사와 함께** | **바로 활용 가능**
 
 ---
 
@@ -30,18 +30,18 @@
 
 ## 📚 세션 구성 (총 4시간 10분)
 
-| 단계 | 세션 | 무엇을 배우나요? | 시간 |
-|:---:|------|-----------------|:----:|
-| **준비** | [Session 0: 환경 세팅](sessions/session0_setup.md) | VS Code와 Copilot 설치 | 25분 |
-| **시작** | [Session 1: 빠른 시작](sessions/session1_quick_start.md) | Copilot 첫 사용법 | 10분 |
-| 📝 | [Session 2: 회의록 자동 정리](sessions/session2_meeting_notes.md) | 30분 회의록을 5분 만에 | 30분 |
-| 📄 | [Session 3: 문서 자동 작성](sessions/session3_document_automation.md) | PRD 문서를 5분 만에 | 30분 |
-| ☕ | **휴식** | 커피 한 잔 | 15분 |
-| 🔍 | [Session 4: UX 리서치 분석](sessions/session4_ux_research.md) | 사용자 피드백 자동 분석 | 30분 |
-| 📊 | [Session 5: 데이터 분석](sessions/session5_csv_report.md) | CSV 데이터 → 차트 | 30분 |
-| 🌐 | [Session 6: 웹 애플리케이션](sessions/session6_web_app.md) | 나만의 웹페이지 만들기 | 30분 |
-| 🤖 | [Session 7: 업무 자동화](sessions/session7_automation.md) | 반복 작업 자동화 | 30분 |
-| 🔄 | [Session 8: 워크플로우 통합](sessions/session8_workflow.md) | 모든 기술 연결하기 | 20분 |
+| 세션 | 내용 | 시간 |
+|------|------|:----:|
+| [Session 0: 환경 세팅](sessions/session0_setup.md) | VS Code와 Copilot 설치 | 25분 |
+| [Session 1: 빠른 시작](sessions/session1_quick_start.md) | Copilot 첫 사용법 | 10분 |
+| [Session 2: 회의록 자동 정리](sessions/session2_meeting_notes.md) | 30분 회의록을 5분 만에 | 30분 |
+| [Session 3: 문서 자동 작성](sessions/session3_document_automation.md) | PRD 문서를 5분 만에 | 30분 |
+| **휴식** | 커피 한 잔 ☕ | 15분 |
+| [Session 4: UX 리서치 분석](sessions/session4_ux_research.md) | 사용자 피드백 자동 분석 | 30분 |
+| [Session 5: 데이터 분석](sessions/session5_csv_report.md) | CSV → HTML 리포트 | 30분 |
+| [Session 6: 웹 애플리케이션](sessions/session6_web_app.md) | 웹페이지 만들기 | 30분 |
+| [Session 7: 업무 자동화](sessions/session7_automation.md) | 반복 작업 자동화 | 30분 |
+| [Session 8: 워크플로우 통합](sessions/session8_workflow.md) | 실무 적용 계획 | 20분 |
 
 ---
 
@@ -49,9 +49,11 @@
 
 ### 1️⃣ 설치하기
 **Session 0**에서 필요한 모든 것을 설치합니다:
-- VS Code 에디터
-- GitHub Copilot 확장
-- Python 환경
+- VS Code 에디터 (강력한 텍스트 편집기)
+- GitHub Copilot 확장 (AI 도우미)
+- Python 환경 (데이터 분석 도구)
+
+**💡 Tip**: 설치가 처음이라 걱정되시나요? 강사가 함께 진행하니 걱정 마세요!
 
 👉 **[Session 0: 환경 세팅 바로가기](sessions/session0_setup.md)**
 
@@ -71,19 +73,19 @@ Session 2부터 차례대로 따라하면서 배웁니다.
 
 ---
 
-## � 실습 팁
+## 💡 실습 팁
 
-### ✅ 이렇게 하세요
-- 천천히 따라하세요 (서두르지 마세요)
+**권장사항**
+- 천천히 따라하세요
 - 프롬프트를 그대로 복사해서 사용하세요
 - 결과물을 잘 저장하세요
 - 막히면 언제든 질문하세요
 
-### ❌ 이건 피하세요
-- 여러 세션을 동시에 진행
-- 프롬프트를 대충 작성
-- 에러 메시지 무시
-- 혼자 끙끙대기 (바로 질문하세요!)
+**주의사항**
+- 여러 세션을 동시에 진행하지 마세요
+- 프롬프트를 대충 작성하지 마세요
+- 에러 메시지를 무시하지 마세요
+- 혼자 끙끙대지 말고 바로 질문하세요
 
 ---
 
