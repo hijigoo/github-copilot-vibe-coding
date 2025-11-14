@@ -40,7 +40,7 @@
 | [Session 4: 사용자 피드백 분석](<sessions/4. 사용자 피드백 분석.md>) | 사용자 피드백 자동 분석 | 25분 |
 | [Session 5: 데이터 기반 의사결정](<sessions/5. 데이터 기반 의사결정.md>) | 정성/정량 데이터 통합 분석 | 30분 |
 | [Session 6: CSV 리포트 변환](<sessions/6. CSV 데이터를 HTML 리포트로 변환.md>) | CSV → HTML 리포트 | 20분 |
-| [Session 7: 제품 아이디어 관리 도구](<sessions/7. 제품 아이디어 관리 도구 만들기.md>) | PO 실무 도구 만들기 | 40분 |
+| [Session 7: 제품 아이디어 관리 도구](<sessions/7. 제품 아이디어 관리 도구 만들기.md>) | PO 실무 도구 만들기 | 25분 |
 | [Session 8: 실무 적용 & 종합 Q&A](<sessions/8. 실무 적용 & 종합 Q&A.md>) | 워크숍 마무리 & 질의응답 | 20분 |
 
 ---
