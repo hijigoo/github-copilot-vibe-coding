@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회의록 상세 분석 - 숙박 예약 플랫폼 Q4 제품 개선</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .card-header-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .card-header h2 {
+            color: #333;
+            font-size: 1.8em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .participants {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .participant {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .participant-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .participant-role {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .priority-high {
+            background: #fee;
+            color: #c00;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .priority-medium {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .priority-low {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .status-delayed {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .status-today {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .status-normal {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .person-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .person-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .person-name {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .person-stats {
+            display: flex;
+            gap: 15px;
+        }
+
+        .stat-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .stat-total {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .stat-delayed {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .stat-today {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .stat-normal {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-date {
+            min-width: 120px;
+            font-weight: bold;
+            color: #667eea;
+            padding-right: 20px;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .timeline-content.delayed {
+            border-left-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .timeline-content.today {
+            border-left-color: #ffc107;
+            background: #fffef5;
+        }
+
+        .timeline-task {
+            margin-bottom: 8px;
+        }
+
+        .timeline-assignee {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .alert {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid;
+        }
+
+        .alert-danger {
+            background: #fff5f5;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .alert-warning {
+            background: #fffef5;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .alert h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .load-badge {
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .load-high {
+            background: #dc3545;
+            color: white;
+        }
+
+        .load-medium {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .load-low {
+            background: #28a745;
+            color: white;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-stat {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .summary-stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .summary-stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 회의록 상세 분석</h1>
+            <div class="subtitle">숙박 예약 플랫폼 Q4 제품 개선 회의</div>
+            <div class="subtitle">분석 기준일: 2025년 11월 20일 (수)</div>
+        </div>
+
+        <div class="content">
+            <!-- 회의 정보 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">📅</span>
+                    <h2>회의 정보</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>날짜</strong>
+                        2025년 11월 13일 (수)
+                    </div>
+                    <div class="info-item">
+                        <strong>시간</strong>
+                        14:00 - 16:00 (2시간)
+                    </div>
+                    <div class="info-item">
+                        <strong>장소</strong>
+                        본사 3층 회의실
+                    </div>
+                    <div class="info-item">
+                        <strong>주제</strong>
+                        숙박 예약 플랫폼 Q4 제품 개선 회의
+                    </div>
+                </div>
+            </div>
+
+            <!-- 참석자 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">👥</span>
+                    <h2>참석자 목록</h2>
+                </div>
+                <div class="participants">
+                    <div class="participant">
+                        <div class="participant-name">김민수</div>
+                        <div class="participant-role">PO (Product Owner)</div>
+                    </div>
+                    <div class="participant">
+                        <div class="participant-name">이지혜</div>
+                        <div class="participant-role">UX 리드</div>
+                    </div>
+                    <div class="participant">
+                        <div class="participant-name">박준형</div>
+                        <div class="participant-role">개발 팀장</div>
+                    </div>
+                    <div class="participant">
+                        <div class="participant-name">최수진</div>
+                        <div class="participant-role">마케팅</div>
+                    </div>
+                    <div class="participant">
+                        <div class="participant-name">강미래</div>
+                        <div class="participant-role">데이터 분석</div>
+                    </div>
+                    <div class="participant">
+                        <div class="participant-name">윤석진</div>
+                        <div class="participant-role">백엔드</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 전체 통계 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">📊</span>
+                    <h2>전체 통계 요약</h2>
+                </div>
+                <div class="summary-stats">
+                    <div class="summary-stat">
+                        <div class="summary-stat-number">30</div>
+                        <div class="summary-stat-label">총 작업</div>
+                    </div>
+                    <div class="summary-stat" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
+                        <div class="summary-stat-number">16</div>
+                        <div class="summary-stat-label">지연된 작업 (53%)</div>
+                    </div>
+                    <div class="summary-stat" style="background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);">
+                        <div class="summary-stat-number">3</div>
+                        <div class="summary-stat-label">오늘 마감 (10%)</div>
+                    </div>
+                    <div class="summary-stat" style="background: linear-gradient(135deg, #28a745 0%, #218838 100%);">
+                        <div class="summary-stat-number">11</div>
+                        <div class="summary-stat-label">정상 진행 (37%)</div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <div class="chart-title">우선순위별 작업 분포</div>
+                        <canvas id="priorityChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-title">상태별 작업 분포</div>
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 즉시 조치 필요 항목 -->
+            <div class="alert alert-warning">
+                <h3>⚠️ 즉시 조치 필요 항목 (오늘 11/20 마감)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>담당자</th>
+                            <th>작업 내용</th>
+                            <th>우선순위</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>박준형</strong></td>
+                            <td>Elasticsearch POC 진행</td>
+                            <td><span class="priority-high">🔴 높음</span></td>
+                            <td>오늘 오전 10시 회의에서 검토 예정</td>
+                        </tr>
+                        <tr>
+                            <td><strong>최수진</strong></td>
+                            <td>마케팅 캠페인 기획안</td>
+                            <td><span class="priority-medium">🟡 중간</span></td>
+                            <td>오늘 중 제출 필요</td>
+                        </tr>
+                        <tr>
+                            <td><strong>강미래</strong></td>
+                            <td>A/B 테스트 도구 세팅</td>
+                            <td><span class="priority-medium">🟡 중간</span></td>
+                            <td>오늘 오전 10시 회의에서 공유 예정</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 심각한 지연 항목 -->
+            <div class="alert alert-danger">
+                <h3>🚨 심각한 지연 항목 (5일 이상 지연)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>담당자</th>
+                            <th>작업 내용</th>
+                            <th>마감일</th>
+                            <th>지연 일수</th>
+                            <th>우선순위</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>이지혜</strong></td>
+                            <td>와이어프레임 3안 공유</td>
+                            <td>11/14</td>
+                            <td><strong>6일</strong></td>
+                            <td><span class="priority-high">🔴 높음</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>김민수</strong></td>
+                            <td>경영진 보고서 작성</td>
+                            <td>11/15</td>
+                            <td><strong>5일</strong></td>
+                            <td><span class="priority-high">🔴 높음</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 담당자별 작업 목록 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">📋</span>
+                    <h2>담당자별 작업 목록</h2>
+                </div>
+
+                <!-- 김민수 -->
+                <div class="person-section">
+                    <div class="person-header">
+                        <div class="person-name">👤 김민수 (PO)</div>
+                        <div class="person-stats">
+                            <span class="stat-badge stat-total">총 2개</span>
+                            <span class="stat-badge stat-delayed">지연 2개</span>
+                            <span class="load-badge load-high">부하도: 높음</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>작업 내용</th>
+                                <th>마감일</th>
+                                <th>남은 기간</th>
+                                <th>우선순위</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>경영진 보고서 작성</td>
+                                <td>11/15 (금)</td>
+                                <td><strong>기한 경과 (5일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>예산 확보 회의</td>
+                                <td>11/16 (토)</td>
+                                <td><strong>기한 경과 (4일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 이지혜 -->
+                <div class="person-section">
+                    <div class="person-header">
+                        <div class="person-name">👤 이지혜 (UX 리드)</div>
+                        <div class="person-stats">
+                            <span class="stat-badge stat-total">총 7개</span>
+                            <span class="stat-badge stat-delayed">지연 6개</span>
+                            <span class="stat-badge stat-normal">정상 1개</span>
+                            <span class="load-badge load-high">부하도: 높음</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>작업 내용</th>
+                                <th>마감일</th>
+                                <th>남은 기간</th>
+                                <th>우선순위</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>와이어프레임 3안 공유</td>
+                                <td>11/14 (목)</td>
+                                <td><strong>기한 경과 (6일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>사용자 테스트 5명 모집</td>
+                                <td>11/17 (일)</td>
+                                <td><strong>기한 경과 (3일)</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>프로토타입 제작</td>
+                                <td>11/18 (월)</td>
+                                <td><strong>기한 경과 (2일)</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>리뷰 섹션을 상단으로 이동</td>
+                                <td>이번 주 (11/13-11/19)</td>
+                                <td><strong>기한 경과 (1일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>모바일 필터 버튼 크기 2배 확대</td>
+                                <td>이번 주 (11/13-11/19)</td>
+                                <td><strong>기한 경과 (1일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>예약 버튼 색상 변경 (파란색→주황색)</td>
+                                <td>이번 주 (11/13-11/19)</td>
+                                <td><strong>기한 경과 (1일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>필터 UI 전면 개편</td>
+                                <td>2주 후 (11/27 예상)</td>
+                                <td>7일 남음</td>
+                                <td><span class="priority-low">🟢 낮음</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 박준형 -->
+                <div class="person-section">
+                    <div class="person-header">
+                        <div class="person-name">👤 박준형 (개발 팀장)</div>
+                        <div class="person-stats">
+                            <span class="stat-badge stat-total">총 6개</span>
+                            <span class="stat-badge stat-delayed">지연 2개</span>
+                            <span class="stat-badge stat-today">오늘 1개</span>
+                            <span class="stat-badge stat-normal">정상 3개</span>
+                            <span class="load-badge load-medium">부하도: 중간</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>작업 내용</th>
+                                <th>마감일</th>
+                                <th>남은 기간</th>
+                                <th>우선순위</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>기술 스펙 문서 작성</td>
+                                <td>11/17 (일)</td>
+                                <td><strong>기한 경과 (3일)</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>인프라 비용 산정</td>
+                                <td>11/18 (월)</td>
+                                <td><strong>기한 경과 (2일)</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr style="background: #fffef5;">
+                                <td><strong>Elasticsearch POC 진행</strong></td>
+                                <td><strong>11/20 (수)</strong></td>
+                                <td><strong>오늘 마감</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-today">⏰ 마감일</span></td>
+                            </tr>
+                            <tr>
+                                <td>검색 API Elasticsearch 전환</td>
+                                <td>2주 후 (11/27 예상)</td>
+                                <td>7일 남음</td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                            <tr>
+                                <td>가격 알림 기능 개발</td>
+                                <td>다음 스프린트 (12월 초 예상)</td>
+                                <td>약 2주 남음</td>
+                                <td><span class="priority-low">🟢 낮음</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                            <tr>
+                                <td>Push 알림 시스템 구축</td>
+                                <td>다음 스프린트 (12월 초 예상)</td>
+                                <td>약 2주 남음</td>
+                                <td><span class="priority-low">🟢 낮음</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 최수진 -->
+                <div class="person-section">
+                    <div class="person-header">
+                        <div class="person-name">👤 최수진 (마케팅)</div>
+                        <div class="person-stats">
+                            <span class="stat-badge stat-total">총 5개</span>
+                            <span class="stat-badge stat-delayed">지연 3개</span>
+                            <span class="stat-badge stat-today">오늘 1개</span>
+                            <span class="stat-badge stat-normal">정상 1개</span>
+                            <span class="load-badge load-medium">부하도: 중간</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>작업 내용</th>
+                                <th>마감일</th>
+                                <th>남은 기간</th>
+                                <th>우선순위</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>경쟁사 분석 보고서</td>
+                                <td>11/16 (토)</td>
+                                <td><strong>기한 경과 (4일)</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>A/B 테스트 시나리오 작성</td>
+                                <td>11/19 (화)</td>
+                                <td><strong>기한 경과 (1일)</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr style="background: #fffef5;">
+                                <td><strong>마케팅 캠페인 기획안</strong></td>
+                                <td><strong>11/20 (수)</strong></td>
+                                <td><strong>오늘 마감</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-today">⏰ 마감일</span></td>
+                            </tr>
+                            <tr>
+                                <td>리뷰 섹션을 상단으로 이동 (공동)</td>
+                                <td>이번 주 (11/13-11/19)</td>
+                                <td><strong>기한 경과 (1일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>필터 UI 전면 개편 (공동)</td>
+                                <td>2주 후 (11/27 예상)</td>
+                                <td>7일 남음</td>
+                                <td><span class="priority-low">🟢 낮음</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 강미래 -->
+                <div class="person-section">
+                    <div class="person-header">
+                        <div class="person-name">👤 강미래 (데이터 분석)</div>
+                        <div class="person-stats">
+                            <span class="stat-badge stat-total">총 4개</span>
+                            <span class="stat-badge stat-delayed">지연 1개</span>
+                            <span class="stat-badge stat-today">오늘 1개</span>
+                            <span class="stat-badge stat-normal">정상 2개</span>
+                            <span class="load-badge load-low">부하도: 보통</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>작업 내용</th>
+                                <th>마감일</th>
+                                <th>남은 기간</th>
+                                <th>우선순위</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>전환율 대시보드 업데이트</td>
+                                <td>11/17 (일)</td>
+                                <td><strong>기한 경과 (3일)</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>주간 데이터 리포트</td>
+                                <td>매주 금요일 (11/14, 11/21)</td>
+                                <td>내일 (11/21)</td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                            <tr style="background: #fffef5;">
+                                <td><strong>A/B 테스트 도구 세팅</strong></td>
+                                <td><strong>11/20 (수)</strong></td>
+                                <td><strong>오늘 마감</strong></td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-today">⏰ 마감일</span></td>
+                            </tr>
+                            <tr>
+                                <td>A/B 테스트 준비</td>
+                                <td>다음 주 (11/20-11/26)</td>
+                                <td>진행 중</td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 윤석진 -->
+                <div class="person-section">
+                    <div class="person-header">
+                        <div class="person-name">👤 윤석진 (백엔드)</div>
+                        <div class="person-stats">
+                            <span class="stat-badge stat-total">총 6개</span>
+                            <span class="stat-badge stat-delayed">지연 2개</span>
+                            <span class="stat-badge stat-normal">정상 4개</span>
+                            <span class="load-badge load-medium">부하도: 중간</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>작업 내용</th>
+                                <th>마감일</th>
+                                <th>남은 기간</th>
+                                <th>우선순위</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CDN 설정 완료</td>
+                                <td>11/18 (월)</td>
+                                <td><strong>기한 경과 (2일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>이미지 최적화 스크립트 작성</td>
+                                <td>11/19 (화)</td>
+                                <td><strong>기한 경과 (1일)</strong></td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-delayed">⚠️ 지연</span></td>
+                            </tr>
+                            <tr>
+                                <td>성능 개선 전후 비교 리포트</td>
+                                <td>11/22 (금)</td>
+                                <td>2일 남음</td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                            <tr>
+                                <td>이미지 로딩 속도 개선 - CDN 설정</td>
+                                <td>다음 주 (11/20-11/26)</td>
+                                <td>진행 중</td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                            <tr>
+                                <td>이미지 WebP 포맷 전환</td>
+                                <td>다음 주 (11/20-11/26)</td>
+                                <td>진행 중</td>
+                                <td><span class="priority-high">🔴 높음</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                            <tr>
+                                <td>검색 API Elasticsearch 전환 (공동)</td>
+                                <td>2주 후 (11/27 예상)</td>
+                                <td>7일 남음</td>
+                                <td><span class="priority-medium">🟡 중간</span></td>
+                                <td><span class="status-normal">✅ 정상</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 마감일 타임라인 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">⏰</span>
+                    <h2>마감일 타임라인</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/14 (목)</div>
+                        <div class="timeline-content delayed">
+                            <div class="timeline-task"><strong>⚠️ 와이어프레임 3안 공유</strong> (6일 지연)</div>
+                            <div class="timeline-assignee">담당: 이지혜 | 우선순위: 🔴 높음</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/15 (금)</div>
+                        <div class="timeline-content delayed">
+                            <div class="timeline-task"><strong>⚠️ 경영진 보고서 작성</strong> (5일 지연)</div>
+                            <div class="timeline-assignee">담당: 김민수 | 우선순위: 🔴 높음</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/16 (토)</div>
+                        <div class="timeline-content delayed">
+                            <div class="timeline-task"><strong>⚠️ 예산 확보 회의</strong> (4일 지연)</div>
+                            <div class="timeline-assignee">담당: 김민수 | 우선순위: 🔴 높음</div>
+                            <div class="timeline-task"><strong>⚠️ 경쟁사 분석 보고서</strong> (4일 지연)</div>
+                            <div class="timeline-assignee">담당: 최수진 | 우선순위: 🟡 중간</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/17 (일)</div>
+                        <div class="timeline-content delayed">
+                            <div class="timeline-task"><strong>⚠️ 사용자 테스트 5명 모집</strong> (3일 지연)</div>
+                            <div class="timeline-assignee">담당: 이지혜 | 우선순위: 🟡 중간</div>
+                            <div class="timeline-task"><strong>⚠️ 기술 스펙 문서 작성</strong> (3일 지연)</div>
+                            <div class="timeline-assignee">담당: 박준형 | 우선순위: 🟡 중간</div>
+                            <div class="timeline-task"><strong>⚠️ 전환율 대시보드 업데이트</strong> (3일 지연)</div>
+                            <div class="timeline-assignee">담당: 강미래 | 우선순위: 🟡 중간</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/18 (월)</div>
+                        <div class="timeline-content delayed">
+                            <div class="timeline-task"><strong>⚠️ 프로토타입 제작</strong> (2일 지연)</div>
+                            <div class="timeline-assignee">담당: 이지혜 | 우선순위: 🟡 중간</div>
+                            <div class="timeline-task"><strong>⚠️ 인프라 비용 산정</strong> (2일 지연)</div>
+                            <div class="timeline-assignee">담당: 박준형 | 우선순위: 🟡 중간</div>
+                            <div class="timeline-task"><strong>⚠️ CDN 설정 완료</strong> (2일 지연)</div>
+                            <div class="timeline-assignee">담당: 윤석진 | 우선순위: 🔴 높음</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/19 (화)</div>
+                        <div class="timeline-content delayed">
+                            <div class="timeline-task"><strong>⚠️ A/B 테스트 시나리오 작성</strong> (1일 지연)</div>
+                            <div class="timeline-assignee">담당: 최수진 | 우선순위: 🟡 중간</div>
+                            <div class="timeline-task"><strong>⚠️ 이미지 최적화 스크립트 작성</strong> (1일 지연)</div>
+                            <div class="timeline-assignee">담당: 윤석진 | 우선순위: 🔴 높음</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/20 (수) 오늘</div>
+                        <div class="timeline-content today">
+                            <div class="timeline-task"><strong>⏰ Elasticsearch POC 진행</strong></div>
+                            <div class="timeline-assignee">담당: 박준형 | 우선순위: 🔴 높음</div>
+                            <div class="timeline-task"><strong>⏰ 마케팅 캠페인 기획안</strong></div>
+                            <div class="timeline-assignee">담당: 최수진 | 우선순위: 🟡 중간</div>
+                            <div class="timeline-task"><strong>⏰ A/B 테스트 도구 세팅</strong></div>
+                            <div class="timeline-assignee">담당: 강미래 | 우선순위: 🟡 중간</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/21 (목)</div>
+                        <div class="timeline-content">
+                            <div class="timeline-task"><strong>주간 데이터 리포트</strong></div>
+                            <div class="timeline-assignee">담당: 강미래 | 우선순위: 🔴 높음</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/22 (금)</div>
+                        <div class="timeline-content">
+                            <div class="timeline-task"><strong>성능 개선 전후 비교 리포트</strong></div>
+                            <div class="timeline-assignee">담당: 윤석진 | 우선순위: 🟡 중간</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">11/27 (수)</div>
+                        <div class="timeline-content">
+                            <div class="timeline-task"><strong>검색 API Elasticsearch 전환</strong></div>
+                            <div class="timeline-assignee">담당: 박준형, 윤석진 | 우선순위: 🟡 중간</div>
+                            <div class="timeline-task"><strong>필터 UI 전면 개편</strong></div>
+                            <div class="timeline-assignee">담당: 이지혜, 최수진 | 우선순위: 🟢 낮음</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">12월 초</div>
+                        <div class="timeline-content">
+                            <div class="timeline-task"><strong>가격 알림 기능 개발</strong></div>
+                            <div class="timeline-assignee">담당: 박준형 | 우선순위: 🟢 낮음</div>
+                            <div class="timeline-task"><strong>Push 알림 시스템 구축</strong></div>
+                            <div class="timeline-assignee">담당: 박준형 | 우선순위: 🟢 낮음</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 담당자별 작업 부하 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">📊</span>
+                    <h2>담당자별 작업 부하</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>담당자</th>
+                            <th>총 작업</th>
+                            <th>지연</th>
+                            <th>오늘 마감</th>
+                            <th>정상</th>
+                            <th>부하도</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>이지혜 (UX 리드)</strong></td>
+                            <td>7개</td>
+                            <td>6</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td><span class="load-badge load-high">🔴 높음</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>박준형 (개발 팀장)</strong></td>
+                            <td>6개</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td><span class="load-badge load-medium">🟡 중간</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>윤석진 (백엔드)</strong></td>
+                            <td>6개</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>4</td>
+                            <td><span class="load-badge load-medium">🟡 중간</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>최수진 (마케팅)</strong></td>
+                            <td>5개</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td><span class="load-badge load-medium">🟡 중간</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>강미래 (데이터 분석)</strong></td>
+                            <td>4개</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td><span class="load-badge load-low">🟢 보통</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>김민수 (PO)</strong></td>
+                            <td>2개</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><span class="load-badge load-high">🔴 높음</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 다음 회의 정보 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">📌</span>
+                    <h2>다음 회의 정보</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>일시</strong>
+                        11월 20일 (수) 오전 10:00 (오늘!)
+                    </div>
+                    <div class="info-item">
+                        <strong>참석자</strong>
+                        전원 참석
+                    </div>
+                    <div class="info-item">
+                        <strong>준비사항</strong>
+                        각자 진행 상황 10분 발표 자료
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <strong>안건:</strong>
+                    <ol style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>우선순위 1 작업 결과 리뷰</li>
+                        <li>A/B 테스트 중간 결과 공유</li>
+                        <li>Elasticsearch POC 결과 검토</li>
+                        <li>다음 스프린트 계획</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 우선순위 판단 기준 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-header-icon">💡</span>
+                    <h2>우선순위 판단 기준</h2>
+                </div>
+                <div style="line-height: 2;">
+                    <p><strong>🔴 높음:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>이번 주 완료 예정 작업</li>
+                        <li>경영진 보고/예산 관련</li>
+                        <li>성능/UX 개선 즉시 적용 항목</li>
+                        <li>주간 반복 업무</li>
+                    </ul>
+
+                    <p><strong>🟡 중간:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>다음 주 완료 예정 작업</li>
+                        <li>분석/기획 문서 작성</li>
+                        <li>2주 후 완료 예정 개발 작업</li>
+                    </ul>
+
+                    <p><strong>🟢 낮음:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>다음 스프린트 작업</li>
+                        <li>장기 프로젝트</li>
+                        <li>의존성이 있는 후속 작업</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 우선순위별 작업 분포 파이 차트
+        const priorityCtx = document.getElementById('priorityChart').getContext('2d');
+        new Chart(priorityCtx, {
+            type: 'pie',
+            data: {
+                labels: ['🔴 높음 (13개)', '🟡 중간 (13개)', '🟢 낮음 (4개)'],
+                datasets: [{
+                    data: [13, 13, 4],
+                    backgroundColor: [
+                        '#dc3545',
+                        '#ffc107',
+                        '#28a745'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 13
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return label + ': ' + percentage + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 상태별 작업 분포 파이 차트
+        const statusCtx = document.getElementById('statusChart').getContext('2d');
+        new Chart(statusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['⚠️ 지연 (16개)', '⏰ 오늘 마감 (3개)', '✅ 정상 진행 (11개)'],
+                datasets: [{
+                    data: [16, 3, 11],
+                    backgroundColor: [
+                        '#dc3545',
+                        '#ffc107',
+                        '#28a745'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 13
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return label + ': ' + percentage + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

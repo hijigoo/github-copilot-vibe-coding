@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 제품 개발팀 주간 회의록</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guide {
+            font-size: 0.9em;
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        td input {
+            width: 100%;
+            border: none;
+            padding: 8px;
+            font-size: 0.95em;
+        }
+
+        td input:focus {
+            outline: 2px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .add-row-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .add-row-btn:hover {
+            background: #218838;
+        }
+
+        .save-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .save-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 제품 개발팀 주간 회의록</h1>
+            <p>Weekly Product Development Team Meeting Notes</p>
+        </div>
+
+        <form id="meetingForm">
+            <!-- 1. 회의 기본 정보 -->
+            <div class="section">
+                <div class="section-title">📅 회의 기본 정보</div>
+                <div class="guide">
+                    💡 회의 날짜, 시작/종료 시간, 참석자 이름을 모두 기입해주세요.
+                </div>
+                <div class="form-group">
+                    <label for="meetingDate">회의 날짜</label>
+                    <input type="date" id="meetingDate" required>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="startTime">시작 시간</label>
+                        <input type="time" id="startTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endTime">종료 시간</label>
+                        <input type="time" id="endTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="attendees">참석자 👥</label>
+                    <input type="text" id="attendees" placeholder="예: 김철수, 이영희, 박민수, 최지원" required>
+                </div>
+                <div class="form-group">
+                    <label for="absentees">불참자 (선택)</label>
+                    <input type="text" id="absentees" placeholder="예: 정수진 (휴가)">
+                </div>
+            </div>
+
+            <!-- 2. 지난 회의 Action Items 리뷰 -->
+            <div class="section">
+                <div class="section-title">✅ 지난 회의 Action Items 리뷰</div>
+                <div class="guide">
+                    💡 지난 주 회의에서 정한 액션 아이템들의 진행 상황을 검토하고 기록해주세요.
+                </div>
+                <div class="form-group">
+                    <textarea id="previousActions" placeholder="예:&#10;✅ [완료] API 문서 업데이트 - 김철수&#10;🔄 [진행중] 사용자 테스트 준비 - 이영희 (80% 완료)&#10;⏸️ [보류] 디자인 시스템 개선 - 박민수 (리소스 부족)"></textarea>
+                </div>
+            </div>
+
+            <!-- 3. 주요 논의 사항 -->
+            <div class="section">
+                <div class="section-title">💬 주요 논의 사항</div>
+                <div class="guide">
+                    💡 회의에서 논의된 주요 주제와 내용을 상세히 기록해주세요. 각 주제별로 구분하여 작성하면 좋습니다.
+                </div>
+                <div class="form-group">
+                    <textarea id="discussions" placeholder="예:&#10;1️⃣ 신규 기능 개발 일정&#10;   - Q1 출시 목표로 개발 착수&#10;   - 프로토타입 2주 내 완성 필요&#10;&#10;2️⃣ 성능 최적화 방안&#10;   - 로딩 속도 개선 우선순위 논의&#10;   - 캐싱 전략 검토&#10;&#10;3️⃣ 사용자 피드백 반영&#10;   - 대시보드 UI 개선 요청 검토"></textarea>
+                </div>
+            </div>
+
+            <!-- 4. 결정 사항 -->
+            <div class="section">
+                <div class="section-title">🎯 결정 사항</div>
+                <div class="guide">
+                    💡 회의에서 최종적으로 결정된 사항들을 명확하게 기록해주세요. 누가, 무엇을, 언제까지 할지 구체적으로 작성합니다.
+                </div>
+                <div class="form-group">
+                    <textarea id="decisions" placeholder="예:&#10;✓ 신규 기능 개발 승인 - 예산 5000만원 배정&#10;✓ 디자인 시스템 v2.0 도입 결정 (3월부터)&#10;✓ 주간 스프린트 미팅 시간 변경: 월요일 10:00 → 화요일 14:00&#10;✓ QA 팀과 협업 프로세스 개선안 채택"></textarea>
+                </div>
+            </div>
+
+            <!-- 5. 새로운 Action Items -->
+            <div class="section">
+                <div class="section-title">📝 새로운 Action Items</div>
+                <div class="guide">
+                    💡 이번 회의에서 새로 발생한 액션 아이템을 표에 정리해주세요. 담당자와 마감일을 명확히 지정합니다.
+                </div>
+                <table id="actionItemsTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%">액션 아이템</th>
+                            <th style="width: 20%">담당자</th>
+                            <th style="width: 20%">마감일</th>
+                            <th style="width: 20%">우선순위</th>
+                        </tr>
+                    </thead>
+                    <tbody id="actionItemsBody">
+                        <tr>
+                            <td><input type="text" placeholder="예: API 스펙 문서 작성"></td>
+                            <td><input type="text" placeholder="예: 김철수"></td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select style="width: 100%; padding: 8px; border: none;">
+                                    <option value="높음">🔴 높음</option>
+                                    <option value="중간" selected>🟡 중간</option>
+                                    <option value="낮음">🟢 낮음</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="예: 프로토타입 디자인 검토"></td>
+                            <td><input type="text" placeholder="예: 이영희"></td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select style="width: 100%; padding: 8px; border: none;">
+                                    <option value="높음">🔴 높음</option>
+                                    <option value="중간" selected>🟡 중간</option>
+                                    <option value="낮음">🟢 낮음</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="예: 테스트 시나리오 작성"></td>
+                            <td><input type="text" placeholder="예: 박민수"></td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select style="width: 100%; padding: 8px; border: none;">
+                                    <option value="높음">🔴 높음</option>
+                                    <option value="중간" selected>🟡 중간</option>
+                                    <option value="낮음">🟢 낮음</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="add-row-btn" onclick="addActionItemRow()">➕ 액션 아이템 추가</button>
+            </div>
+
+            <!-- 6. 다음 회의 안건 -->
+            <div class="section">
+                <div class="section-title">🔜 다음 회의 안건</div>
+                <div class="guide">
+                    💡 다음 주 회의에서 다룰 주제들을 미리 정리해주세요. 준비가 필요한 사항도 함께 기록합니다.
+                </div>
+                <div class="form-group">
+                    <textarea id="nextAgenda" placeholder="예:&#10;1. Q1 개발 로드맵 최종 검토&#10;2. 신규 채용 인력 온보딩 계획&#10;3. 기술 스택 업그레이드 논의 (React 18 → 19)&#10;4. 고객 만족도 조사 결과 공유&#10;&#10;📌 준비 사항:&#10;- 로드맵 PPT 준비 (담당: 김철수)&#10;- 설문조사 데이터 분석 (담당: 이영희)"></textarea>
+                </div>
+            </div>
+
+            <!-- 7. 참고 자료 링크 -->
+            <div class="section">
+                <div class="section-title">🔗 참고 자료 링크</div>
+                <div class="guide">
+                    💡 회의와 관련된 문서, 자료, 링크 등을 정리해주세요. 나중에 쉽게 찾을 수 있도록 합니다.
+                </div>
+                <div class="form-group">
+                    <textarea id="references" placeholder="예:&#10;📊 프로젝트 관리 대시보드: https://jira.company.com/project/123&#10;📁 디자인 파일: https://figma.com/file/abc123&#10;📝 API 문서: https://docs.company.com/api/v2&#10;📈 성능 모니터링: https://grafana.company.com&#10;💾 회의 자료: https://drive.google.com/folder/xyz"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="save-btn">💾 회의록 저장 (TXT 파일로 다운로드)</button>
+        </form>
+    </div>
+
+    <script>
+        // Action Items 행 추가 함수
+        function addActionItemRow() {
+            const tbody = document.getElementById('actionItemsBody');
+            const newRow = tbody.insertRow();
+            newRow.innerHTML = `
+                <td><input type="text" placeholder="액션 아이템 입력"></td>
+                <td><input type="text" placeholder="담당자 입력"></td>
+                <td><input type="date"></td>
+                <td>
+                    <select style="width: 100%; padding: 8px; border: none;">
+                        <option value="높음">🔴 높음</option>
+                        <option value="중간" selected>🟡 중간</option>
+                        <option value="낮음">🟢 낮음</option>
+                    </select>
+                </td>
+            `;
+        }
+
+        // 폼 제출 처리 및 TXT 파일 생성
+        document.getElementById('meetingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 폼 데이터 수집
+            const meetingDate = document.getElementById('meetingDate').value;
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
+            const attendees = document.getElementById('attendees').value;
+            const absentees = document.getElementById('absentees').value;
+            const previousActions = document.getElementById('previousActions').value;
+            const discussions = document.getElementById('discussions').value;
+            const decisions = document.getElementById('decisions').value;
+            const nextAgenda = document.getElementById('nextAgenda').value;
+            const references = document.getElementById('references').value;
+
+            // Action Items 테이블 데이터 수집
+            const actionItemsRows = document.querySelectorAll('#actionItemsBody tr');
+            let actionItemsText = '';
+            actionItemsRows.forEach((row, index) => {
+                const inputs = row.querySelectorAll('input, select');
+                const item = inputs[0].value;
+                const assignee = inputs[1].value;
+                const deadline = inputs[2].value;
+                const priority = inputs[3].value;
+
+                if (item || assignee || deadline) {
+                    actionItemsText += `   ${index + 1}. ${item}\n`;
+                    actionItemsText += `      담당자: ${assignee}\n`;
+                    actionItemsText += `      마감일: ${deadline}\n`;
+                    actionItemsText += `      우선순위: ${priority}\n\n`;
+                }
+            });
+
+            // TXT 파일 내용 생성
+            const content = `
+╔═══════════════════════════════════════════════════════════════╗
+║           📋 제품 개발팀 주간 회의록                           ║
+║          Weekly Product Development Team Meeting Notes        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 회의 기본 정보
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+날짜: ${meetingDate}
+시간: ${startTime} ~ ${endTime}
+참석자: ${attendees}
+${absentees ? '불참자: ' + absentees : ''}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ 지난 회의 Action Items 리뷰
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${previousActions}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 주요 논의 사항
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${discussions}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 결정 사항
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${decisions}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 새로운 Action Items
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${actionItemsText}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔜 다음 회의 안건
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${nextAgenda}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔗 참고 자료 링크
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${references}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+작성일: ${new Date().toLocaleString('ko-KR')}
+`;
+
+            // TXT 파일 다운로드
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            const fileName = `제품개발팀_회의록_${meetingDate.replace(/-/g, '')}.txt`;
+            link.href = URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+
+            alert('✅ 회의록이 성공적으로 저장되었습니다!\n파일명: ' + fileName);
+        });
+
+        // 페이지 로드 시 오늘 날짜 자동 입력
+        window.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('meetingDate').value = today;
+        });
+    </script>
+</body>
+</html>
