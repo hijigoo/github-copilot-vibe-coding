@@ -3,6 +3,9 @@
 > **코딩 경험이 없어도 괜찮습니다!**  
 > AI와 함께 업무를 자동화하고 생산성을 높여보세요.
 
+**📚 튜토리얼 바로가기**: [https://hijigoo.gitbook.io/vibe-coding-with-github-copilot/](https://hijigoo.gitbook.io/vibe-coding-with-github-copilot/)  
+*GitBook에서 더 편하게 튜토리얼을 확인하실 수 있습니다!*
+
 ---
 
 ## 🎯 누구를 위한 워크숍인가요?
